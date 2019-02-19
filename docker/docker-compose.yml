@@ -1,0 +1,16 @@
+version: "3.6"
+services:
+  mysql:
+    container_name: kotlin_elastic_mysql
+    build: mysql
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_DATABASE: kotlin_elastic_db
+      MYSQL_USER: kotlin_elastic_user
+      MYSQL_PASSWORD: password
+  sqs:
+    container_name: kotlin_elastic_sqs
+    build: sqs
+    ports:
+      - "9324:9324"
