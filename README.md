@@ -1,14 +1,1 @@
-# TODO
-- [ ] Try using the sqs library.
-- [ ] Create an sqs container.
-- [ ] Make it possible to use aws-cli.
-- [ ] Enqueue id to sqs by aws-cli.
-- [ ] Dequeue id from sqs by code.
-- [ ] Make a mysql container.
-- [ ] Create a test table in mysql and insert test data.
-- [ ] Perform class auto generation of jooq.
-- [ ] Make jooq available.
-- [ ] Fetch test data from mysql.
-- [ ] Create elasticsearch container.
-- [ ] Make the elasticsearch library available.
-- [ ] Index test data to elasticsearch
+
