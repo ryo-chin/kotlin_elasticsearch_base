@@ -16,7 +16,7 @@ import java.util.*
 
 fun main(args: Array<String>) {
     // build sqs client
-    val endpoint = "http://localhost:9324"
+    val endpoint = "http://kotlin-elastic-sqs:9324"
     val region = "elasticmq"
     val accessKey = "x"
     val secretKey = "x"
@@ -45,8 +45,8 @@ fun main(args: Array<String>) {
     // bulk elasticsearch
     val client = RestHighLevelClient(
         RestClient.builder(
-            HttpHost("localhost", 9200, "http"),
-            HttpHost("localhost", 9300, "http")
+            HttpHost("kotlin-elastic-es", 9200, "http"),
+            HttpHost("kotlin-elastic-es", 9300, "http")
         )
     )
     val indexRequests = userList.map { IndexRequest("user", "doc", it.id.toString()).source(it.toMap()) }

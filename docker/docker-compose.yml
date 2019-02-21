@@ -1,7 +1,7 @@
 version: "3.6"
 services:
   mysql:
-    container_name: kotlin_elastic_mysql
+    container_name: kotlin-elastic-mysql
     build: mysql
     ports:
       - "3309:3306"
@@ -12,12 +12,12 @@ services:
       MYSQL_USER: kotlin_elastic_user
       MYSQL_PASSWORD: password
   sqs:
-    container_name: kotlin_elastic_sqs
+    container_name: kotlin-elastic-sqs
     build: sqs
     ports:
       - "9324:9324"
   elasticsearch:
-    container_name: kotlin_elastic_es
+    container_name: kotlin-elastic-es
     build: elasticsearch
     ports:
       - "9200:9200"
