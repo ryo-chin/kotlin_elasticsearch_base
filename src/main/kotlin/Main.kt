@@ -29,8 +29,7 @@ fun main(args: Array<String>) {
     println("Target UserIdList: $userIdList")
 
     // build DB Context
-    val properties = Properties()
-    properties.load(Properties::class.java.getResourceAsStream("/application.properties"))
+    val properties = Properties().apply { load(ClassLoader.getSystemClassLoader().getResourceAsStream("application.properties")) }
     val context = DSL.using(
         properties.getProperty("db.url"),
         properties.getProperty("db.user"),
@@ -54,6 +53,7 @@ fun main(args: Array<String>) {
     val request = BulkRequest().apply { add(indexRequests) }
     val response = client.bulk(request, RequestOptions.DEFAULT)
     println("complete bulk: status ${response.status()}")
+    client.close()
 }
 
 data class User(
