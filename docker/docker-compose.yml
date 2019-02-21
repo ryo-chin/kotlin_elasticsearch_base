@@ -16,3 +16,9 @@ services:
     build: sqs
     ports:
       - "9324:9324"
+  elasticsearch:
+    container_name: kotlin_elastic_es
+    build: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
