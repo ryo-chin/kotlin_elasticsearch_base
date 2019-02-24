@@ -4,20 +4,14 @@
 package jooq.kotlin_elastic_db.tables;
 
 
-import javax.annotation.Generated;
-
 import jooq.kotlin_elastic_db.KotlinElasticDb;
 import jooq.kotlin_elastic_db.tables.records.UsersRecord;
-
-import org.jooq.Field;
-import org.jooq.ForeignKey;
-import org.jooq.Name;
-import org.jooq.Record;
-import org.jooq.Schema;
-import org.jooq.Table;
-import org.jooq.TableField;
+import org.jooq.*;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableImpl;
+
+import javax.annotation.Generated;
+import java.sql.Date;
 
 
 /**
@@ -33,7 +27,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Users extends TableImpl<UsersRecord> {
 
-    private static final long serialVersionUID = 1008162773;
+    private static final long serialVersionUID = -1332503582;
 
     /**
      * The reference instance of <code>kotlin_elastic_db.users</code>
@@ -54,9 +48,39 @@ public class Users extends TableImpl<UsersRecord> {
     public final TableField<UsersRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
-     * The column <code>kotlin_elastic_db.users.name</code>.
+     * The column <code>kotlin_elastic_db.users.last_name</code>.
      */
-    public final TableField<UsersRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR(40), this, "");
+    public final TableField<UsersRecord, String> LAST_NAME = createField("last_name", org.jooq.impl.SQLDataType.VARCHAR(128), this, "");
+
+    /**
+     * The column <code>kotlin_elastic_db.users.first_name</code>.
+     */
+    public final TableField<UsersRecord, String> FIRST_NAME = createField("first_name", org.jooq.impl.SQLDataType.VARCHAR(128), this, "");
+
+    /**
+     * The column <code>kotlin_elastic_db.users.gender</code>.
+     */
+    public final TableField<UsersRecord, String> GENDER = createField("gender", org.jooq.impl.SQLDataType.CHAR(1), this, "");
+
+    /**
+     * The column <code>kotlin_elastic_db.users.phone_number</code>.
+     */
+    public final TableField<UsersRecord, String> PHONE_NUMBER = createField("phone_number", org.jooq.impl.SQLDataType.VARCHAR(128), this, "");
+
+    /**
+     * The column <code>kotlin_elastic_db.users.email</code>.
+     */
+    public final TableField<UsersRecord, String> EMAIL = createField("email", org.jooq.impl.SQLDataType.VARCHAR(128), this, "");
+
+    /**
+     * The column <code>kotlin_elastic_db.users.birth_date</code>.
+     */
+    public final TableField<UsersRecord, Date> BIRTH_DATE = createField("birth_date", org.jooq.impl.SQLDataType.DATE, this, "");
+
+    /**
+     * The column <code>kotlin_elastic_db.users.password</code>.
+     */
+    public final TableField<UsersRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR(128), this, "");
 
     /**
      * Create a <code>kotlin_elastic_db.users</code> table reference
