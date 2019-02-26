@@ -16,6 +16,7 @@ buildscript {
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.20'
+    id 'com.google.cloud.tools.jib' version '1.0.1'
 }
 
 apply plugin: 'nu.studer.jooq'
@@ -100,3 +101,6 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+// Setting for Jib
+jib.to.image = 'hakiba/kotlin_elasticsearch_base'
