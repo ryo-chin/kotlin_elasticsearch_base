@@ -68,6 +68,10 @@ fun main(args: Array<String>) {
             receivedAllId = receiveResult.messages.isEmpty()
         }
         println("Target UserId: ${targetUserIdMap.values}")
+        if (targetUserIdMap.isEmpty()) {
+            println("Skip index, because target data does not exist.")
+            return
+        }
 
         // select from mysql
         val userIdList = targetUserIdMap.values.map { Integer.valueOf(it) }
