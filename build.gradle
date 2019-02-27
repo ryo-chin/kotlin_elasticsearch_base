@@ -110,4 +110,13 @@ jib {
     to {
         image = "hakiba/kotlin_elasticsearch_base:${version}"
     }
+    container {
+        jvmFlags = [
+                '-Xms512m', 
+                '-Xdebug', 
+                '-Dbuild.mode='+System.getProperty("build.mode", "local-jib")]
+        mainClass = 'MainKt'
+        useCurrentTimestamp = true
+        format = 'OCI'
+    }
 }

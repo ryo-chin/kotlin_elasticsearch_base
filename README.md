@@ -13,6 +13,9 @@ run SetupTest#setupSqs
 create by [Jib](https://github.com/GoogleContainerTools/jib)
 ```shell
 $ ./gradlew jibDockerBuild
+
+# if you want set buildMode (default: local-jib)
+$ ./gradlew -Dbuild.mode={buildMode} jibDockerBuild
 ```
 or create by Dockerfile
 ```shell

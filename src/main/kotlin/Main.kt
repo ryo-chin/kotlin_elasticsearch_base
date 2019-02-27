@@ -17,26 +17,28 @@ import java.util.*
 
 
 fun main(args: Array<String>) {
+    // load properties file
+    val buildMode = System.getProperty("build.mode", "local")
+    val propertyFileName = "application-$buildMode.properties"
+    val applicationProperties = Properties().apply { load(ClassLoader.getSystemClassLoader().getResourceAsStream(propertyFileName)) }
+    println("Properties: $applicationProperties")
+
     // build sqs client
-    val sqsHost = "kotlin-elastic-sqs"
-    val endpoint = "http://$sqsHost:9324"
-    val queueName = "user"
-    val queueUrl = "$endpoint/queue/$queueName"
+    val endpoint = applicationProperties.getProperty("sqs.url")
+    val queueUrl = "$endpoint/queue/user"
     val sqs = prepareSQSClient(endpoint)
 
     // build DB Context
-    val properties = Properties().apply { load(ClassLoader.getSystemClassLoader().getResourceAsStream("application.properties")) }
     val context = DSL.using(
-        properties.getProperty("db.url"),
-        properties.getProperty("db.user"),
-        properties.getProperty("db.password"))
+        applicationProperties.getProperty("db.url"),
+        applicationProperties.getProperty("db.user"),
+        applicationProperties.getProperty("db.password"))
 
     // build Elasticsearch Client
-    val esHost = "kotlin-elastic-es"
     val client = RestHighLevelClient(
         RestClient.builder(
-            HttpHost(esHost, 9200, "http"),
-            HttpHost(esHost, 9300, "http")
+            HttpHost.create(applicationProperties.getProperty("elasticsearch.url.1")),
+            HttpHost.create(applicationProperties.getProperty("elasticsearch.url.2"))
         )
     )
 
