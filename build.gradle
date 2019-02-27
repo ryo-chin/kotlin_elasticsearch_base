@@ -103,4 +103,11 @@ compileTestKotlin {
 }
 
 // Setting for Jib
-jib.to.image = 'hakiba/kotlin_elasticsearch_base'
+jib {
+    from {
+        image = "openjdk:11-jre-slim"
+    }
+    to {
+        image = "hakiba/kotlin_elasticsearch_base:${version}"
+    }
+}
